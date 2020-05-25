@@ -1,0 +1,82 @@
+<html>
+    <style>
+        #body {
+  display: flex;
+  flex-direction: column;
+ height: 600px;
+  width: 100%;
+}
+
+#header{
+           height:100px;
+           background-color: lightblue;
+}
+
+
+#footer
+   {display:flex;
+flex-direction: row;
+justify-content: space-around; 
+    background-color: lightblue;
+    padding:30px;
+    width:100%;
+    text-align:center;
+    position: fixed;
+    bottom:0;
+}
+     
+.row
+{
+display: flex;
+  flex: 1;
+}
+
+
+.side {
+  flex: 0.7;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-color: lightgray;
+  
+  }
+
+.side a{
+    display: block;
+    padding:50px;
+
+   
+}
+
+#middle {
+  flex: 4;
+  
+}
+
+    </style>
+    <body>
+        <div id='body'>
+            <div id='header'>
+
+            </div>
+            <div class="row">
+                <div class="side" style="background-color:#aaa;">
+                       <a href='#'>Home</a>
+                       <a href='#'>SignUp</a>
+                        <a href='#'>Register</a>
+                       <a href='#'>Menu</a>
+                   
+                </div>
+                <div id="middle" >
+                    
+                </div>
+             </div>
+            
+        </div>
+        
+        
+        <div id='footer'>
+ <p>Valentine Bookstore</p>&nbsp
+ <p>Address:</p>
+<p>Contact Information:<a href="#">saivara@gmail.com</a></p>
+ </div>
+    </body>
+</html>

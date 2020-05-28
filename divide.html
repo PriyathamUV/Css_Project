@@ -14,14 +14,21 @@
     display: flex;
   }
   .middleleft {
+    text-align: center;
     width: 10%;
+    display: flex;
+    flex-direction: column;
     overflow: auto;
     height: 100%;
     background-color: aqua;
+    justify-content: space-around;
   }
+  /* .middleleft a {
+    size: 50px;
+    justify-content: space-evenly;
+  } */
   .middleright {
     width: 90%;
-    display: inline-block;
     overflow: auto;
   }
   .bottom {
@@ -56,7 +63,10 @@
       </div>
       <div class="middle">
         <div class="middleleft">
-          <h4>Home</h4>
+          <a href="#">Home</a>
+          <a href="#">Login</a>
+          <a href="#">Signup</a>
+          <a href="#">Brands</a>
         </div>
         <div class="middleright">
           <h2 style="text-align: center;">OUR Products</h2>

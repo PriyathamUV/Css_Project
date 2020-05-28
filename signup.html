@@ -6,19 +6,9 @@
   .top {
     width: 100%;
     height: 10%;
+    text-align: center;
     background-color: aquamarine;
     display: inline-block;
-  }
-  .topsubdiv {
-    display: flex;
-  }
-  .titleheading {
-    width: 50%;
-    text-align: right;
-  }
-  .displaytime {
-    width: 50%;
-    text-align: right;
   }
   .middle {
     height: 80%;
@@ -35,9 +25,9 @@
     justify-content: space-around;
   }
   /* .middleleft a {
-      size: 50px;
-      justify-content: space-evenly;
-    } */
+        size: 50px;
+        justify-content: space-evenly;
+      } */
   .middleright {
     width: 90%;
     display: flex;
@@ -66,20 +56,11 @@
     position: fixed;
   }
 </style>
-
 <html>
-  <p id="timestamp"></p>
-  <body onload="startTime()">
+  <body>
     <div class="body">
       <div class="top">
-        <div class="topsubdiv">
-          <div class="titleheading">
-            <h1>TOP</h1>
-          </div>
-          <div class="displaytime">
-            <p id="time"></p>
-          </div>
-        </div>
+        <h1>TOP</h1>
       </div>
       <div class="middle">
         <div class="middleleft">
@@ -94,7 +75,17 @@
           </div>
           <div class="userform">
             <div>
-              <h2 style="text-align: center;">Login</h2>
+              <h2 style="text-align: center;">Register Form</h2>
+              <br />
+              <div style="text-align: center;">
+                First Name:
+                <input type="text" />
+              </div>
+              <br />
+              <div style="text-align: center;">
+                Last Name:
+                <input type="text" />
+              </div>
               <br />
               <div style="text-align: center;">
                 User Name:
@@ -103,17 +94,20 @@
               <br />
               <div style="text-align: center;">
                 Password:&ensp;
+                <input type="password" />
+              </div>
+              <br />
+              <div style="text-align: center;">
+                Date of Birth:
                 <input type="text" />
               </div>
               <br />
-              <br />
               <div style="text-align: center;">
-                <button>Login</button>
+                <button>Register</button>
               </div>
               <br />
-              <br />
               <div style="text-align: center;">
-                <a href="">Register Here</a>
+                <a href="">Login Here</a>
               </div>
             </div>
           </div>
@@ -125,21 +119,3 @@
     </div>
   </body>
 </html>
-<script>
-  function startTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById("time").innerHTML = h + ":" + m + ":" + s;
-    var t = setTimeout(startTime, 1);
-  }
-  function checkTime(i) {
-    if (i < 10) {
-      i = "0" + i;
-    } // add zero in front of numbers < 10
-    return i;
-  }
-</script>

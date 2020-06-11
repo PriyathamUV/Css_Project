@@ -6,9 +6,19 @@
   .top {
     width: 100%;
     height: 10%;
-    text-align: center;
-    background-color: aquamarine;
+    background-color: rgb(189, 140, 150);
     display: inline-block;
+  }
+  .topsubdiv {
+    display: flex;
+  }
+  .titleheading {
+    width: 50%;
+    text-align: right;
+  }
+  .displaytime {
+    width: 50%;
+    text-align: right;
   }
   .middle {
     height: 80%;
@@ -21,16 +31,17 @@
     flex-direction: column;
     overflow: auto;
     height: 100%;
-    background-color: aqua;
+    background-color: rgb(180, 129, 209);
     justify-content: space-around;
   }
   /* .middleleft a {
-        size: 50px;
-        justify-content: space-evenly;
-      } */
+      size: 50px;
+      justify-content: space-evenly;
+    } */
   .middleright {
     width: 90%;
     display: flex;
+    overflow: auto;
   }
   .imageview {
     width: 70%;
@@ -42,7 +53,7 @@
   }
   .userform {
     width: 30%;
-    position: absolute;
+    position: fixed;
     top: 50%;
     right: 0%;
     -ms-transform: translateY(-50%);
@@ -51,16 +62,105 @@
   .bottom {
     width: 100%;
     height: 10%;
-    background-color: aquamarine;
+    background-color: rgba(255, 17, 0, 0.219);
     display: inline-block;
     position: fixed;
   }
+  .mySlides {
+    display: none;
+  }
+  img {
+    vertical-align: middle;
+  }
+
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 0 3px 3px 0;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .active {
+    background-color: #717171;
+  }
+
+  /* Fading animation */
+  .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+
+  @-webkit-keyframes fade {
+    from {
+      opacity: 0.4;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0.4;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* On smaller screens, decrease text size */
+  @media only screen and (max-width: 300px) {
+    .prev,
+    .next {
+      font-size: 11px;
+    }
+  }
 </style>
+
 <html>
-  <body>
+  <p id="timestamp"></p>
+  <body onload="startTime()">
     <div class="body">
       <div class="top">
-        <h1>TOP</h1>
+        <div class="topsubdiv">
+          <div class="titleheading">
+            <h1>TOP</h1>
+          </div>
+          <div class="displaytime">
+            <p id="time"></p>
+          </div>
+        </div>
       </div>
       <div class="middle">
         <div class="middleleft">
@@ -71,7 +171,22 @@
         </div>
         <div class="middleright">
           <div class="imageview">
-            <img src="Capture.PNG" alt="" />
+            <div class="slideshow-container">
+              <div class="mySlides fade">
+                <img src="images/lamb01.jpg" style="width: 100%;" />
+              </div>
+
+              <div class="mySlides fade">
+                <img src="images/dodge.jpg" style="width: 100%;" />
+              </div>
+
+              <div class="mySlides fade">
+                <img src="images/corvette.jpg" style="width: 100%;" />
+              </div>
+
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
           </div>
           <div class="userform">
             <div>
@@ -107,7 +222,7 @@
               </div>
               <br />
               <div style="text-align: center;">
-                <a href="">Login Here</a>
+                <a href="login.html">Login Here</a>
               </div>
             </div>
           </div>
@@ -119,3 +234,46 @@
     </div>
   </body>
 </html>
+<script>
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides((slideIndex += n));
+  }
+
+  function currentSlide(n) {
+    showSlides((slideIndex = n));
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) {
+      slideIndex = 1;
+    }
+    if (n < 1) {
+      slideIndex = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+  }
+  function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById("time").innerHTML = h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 1);
+  }
+  function checkTime(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
+</script>

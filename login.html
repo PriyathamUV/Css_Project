@@ -253,6 +253,20 @@
   }
   function startTime() {
     var today = new Date();
+    var months = [
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAY",
+      "JUN",
+      "JUL",
+      "AUG",
+      "SEP",
+      "OCT",
+      "NOV",
+      "DEC",
+    ];
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
@@ -262,7 +276,7 @@
     var mon = today.getMonth();
     var year = today.getFullYear();
     document.getElementById("time").innerHTML =
-      d + "/" + mon + "/" + year + " " + h + ":" + m + ":" + s;
+      d + "-" + months[mon] + "-" + year + " " + h + ":" + m + ":" + s;
     var t = setTimeout(startTime, 1);
   }
   function checkTime(i) {

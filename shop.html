@@ -1,0 +1,234 @@
+<style>
+    .body {
+      width: auto;
+      height: auto;
+    }
+    .top {
+      width: 100%;
+      height: 10%;
+      background-color: rgb(189, 140, 150);
+      display: inline-block;
+    }
+    .topsubdiv {
+      display: flex;
+    }
+    .titleheading {
+      width: 58%;
+      text-align: right;
+    }
+    .displaytime {
+      width: 42%;
+      text-align: right;
+    }
+    .middle {
+      height: 80%;
+      display: flex;
+    }
+    .middleleft {
+      text-align: center;
+      width: 10%;
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+      height: 100%;
+      background-color: rgb(180, 129, 209);
+      justify-content: space-around;
+    }
+    /* .middleleft a {
+        size: 50px;
+        justify-content: space-evenly;
+      } */
+    
+    .bottom {
+      width: 96.5%;
+      height: 10%;
+      background-color: rgb(189, 140, 150);
+      justify-content: space-around;
+      padding: 20px;
+      display: flex;
+      flex-direction: row;
+      position: fixed;
+    }
+    .mySlides {
+      display: none;
+    }
+    img {
+      vertical-align: middle;
+    }
+  
+    /* Slideshow container */
+    .slideshow-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+    }
+  
+    /* Next & previous buttons */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+  
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 0 3px 3px 0;
+    }
+  
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  
+    .active {
+      background-color: #717171;
+    }
+  
+    /* Fading animation */
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 1.5s;
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+  
+    @-webkit-keyframes fade {
+      from {
+        opacity: 0.4;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  
+    @keyframes fade {
+      from {
+        opacity: 0.4;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+      .prev,
+      .next {
+        font-size: 11px;
+      }
+    }
+  </style>
+  
+  <html>
+    <head>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      />
+    </head>
+    <body onload="startTime()">
+      <div class="body">
+        <div class="top">
+          <div class="topsubdiv">
+            <div class="titleheading">
+              <h1>KARZ</h1>
+            </div>
+            <div class="displaytime">
+              <p id="time"></p>
+            </div>
+          </div>
+        </div>
+        <div class="middle">
+          <div class="middleleft">
+            <a href="signup.html"><i class="fa fa-user-plus"></i>&nbsp&nbspSignup</a >
+            <a href="login.html"><i class="fa fa-user"></i>&nbsp&nbspLogin</a>
+            <a href="Home.html"><i class="fa fa-home"></i>&nbsp&nbspHome</a>
+            <a href="divide.html"><i class="fa fa-cubes"></i>&nbsp&nbspBrands</a>
+            <a href="shop.html"><i class="fa fa-shopping-cart"></i>&nbsp&nbspCart</a>
+          </div>
+          
+          </div>
+        </div>
+        <div class="bottom">
+          <p>Karz dealer's</p>
+          &nbsp
+          <p>Address: 588 Henri Bourassa</p>
+          <p>Contact Information:<a href="#">saivara123@gmail.com</a></p>
+        </div>
+      </div>
+    </body>
+  </html>
+  <script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+  
+    function plusSlides(n) {
+      showSlides((slideIndex += n));
+    }
+  
+    function currentSlide(n) {
+      showSlides((slideIndex = n));
+    }
+  
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      if (n > slides.length) {
+        slideIndex = 1;
+      }
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex - 1].style.display = "block";
+    }
+    function startTime() {
+      var today = new Date();
+      var months = [
+        "JAN",
+        "FEB",
+        "MAR",
+        "APR",
+        "MAY",
+        "JUN",
+        "JUL",
+        "AUG",
+        "SEP",
+        "OCT",
+        "NOV",
+        "DEC",
+      ];
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      var d = today.getDate();
+      var mon = today.getMonth();
+      var year = today.getFullYear();
+      document.getElementById("time").innerHTML =
+        d + "-" + months[mon] + "-" + year + " " + h + ":" + m + ":" + s;
+      var t = setTimeout(startTime, 1);
+    }
+    function checkTime(i) {
+      if (i < 10) {
+        i = "0" + i;
+      }
+      return i;
+    }
+  </script>
+  
